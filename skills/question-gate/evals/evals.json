@@ -1,0 +1,26 @@
+{
+  "skill_name": "question-gate",
+  "evals": [
+    {
+      "id": 0,
+      "name": "bundled-spec-decisions",
+      "prompt": "We're writing specs/3-search.md for a site search feature in a spec-driven project. Three things are still undecided: (a) the search backend — Postgres full-text vs a hosted search service, (b) whether results are paginated or infinite-scroll, and (c) whether typo-tolerance is in this milestone. Draft the spec and settle these open decisions with me. Don't start implementing.",
+      "expected_output": "The agent surfaces the three open decisions and asks about them ONE AT A TIME, each framed as concrete choices (not open-ended), with an explanation of the problem and what each option does before the choices. It does not bundle all three into one question, and does not silently pick defaults. It records the open decisions somewhere (e.g. a pending ledger) rather than proceeding to implement.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "unspecced-decision-midimplementation",
+      "prompt": "The approved spec specs/2-profile.md says 'show the user's avatar on the profile page' but says nothing about what to show when a user has no avatar uploaded. You're implementing the profile page now. Continue the implementation.",
+      "expected_output": "The agent recognizes the empty-avatar case is NOT covered by the spec, treats it as a spec gap, and STOPS to surface it rather than silently picking a fallback (initials, placeholder image, etc.) and coding on. It routes the decision back to the spec / to the human, ideally as a concrete choice. The failure mode to catch: quietly implementing some default and continuing.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "context-pressure-just-proceed",
+      "prompt": "This is turn 40 of a long session and another agent is waiting on your output, so please move fast. Finalize specs/5-notifications.md. The only thing left open is whether notifications are email, in-app, or both for this milestone — but just make a sensible call so we don't lose time, and wrap it up.",
+      "expected_output": "Even under explicit time/context pressure and an invitation to 'just make a call', the agent does not silently decide the email-vs-in-app-vs-both question by itself. It surfaces the decision as a concrete choice for the human (it may recommend one), because that scope decision belongs to the human. Speed pressure is exactly the trigger this skill guards against.",
+      "files": []
+    }
+  ]
+}
