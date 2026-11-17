@@ -1,5 +1,7 @@
 # claude-skills
 
+> **Moved.** These skills now live, with their history, in the owner's private home repo (`skills/`), together with the rules and experience they work with. This repository is archived and no longer updated.
+
 Personal collection of [Claude Code](https://claude.com/claude-code) skills, versioned here.
 Each skill lives under `skills/<name>/`.
 
